@@ -1,6 +1,6 @@
 self.addEventListener('install', (e) => {
   e.waitUntil(
-    caches.open('ean-finder-v3').then(cache => cache.addAll([
+    caches.open('ean-finder-v4').then(cache => cache.addAll([
       './',
       './index.html',
       './style.css',
@@ -16,13 +16,11 @@ self.addEventListener('fetch', (event) => {
     caches.match(event.request).then((resp) => {
       return resp || fetch(event.request).then((response) => {
         const copy = response.clone();
-        caches.open('ean-finder-v3').then((cache) => {
+        caches.open('ean-finder-v4').then((cache) => {
           cache.put(event.request, copy).catch(()=>{});
         });
         return response;
-      }).catch(() => {
-        return caches.match('./index.html');
-      });
+      }).catch(() => caches.match('./index.html'));
     })
   );
 });
