@@ -1,0 +1,8 @@
+body { background: #f7f7f9; }
+.card { border-radius: 12px; }
+#results .card { box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+.product-img { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; background: #eee; }
+.header-wrap { display: flex; gap: .75rem; align-items: center; }
+@media (min-width: 576px) {
+  .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+}
